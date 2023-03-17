@@ -35,7 +35,9 @@ or
 You can use any http client. Below are some examples using curl
 
 curl -X POST -H 'Content-Type: application/json' -d '[{"value":1, "type": "CLUBS"}]' http://localhost:8080/poker/isstraight
-false
+
+Response is false
 
 curl -X POST -H 'Content-Type: application/json' -d '[{"value":1, "type": "CLUBS"},{"value":3, "type": "DIAMONDS"},{"value":5, "type": "HEARTS"},{"value":7, "type": "SPADES"},{"value":6, "type": "CLUBS"},{"value":4, "type": "HEARTS"},{"value":1, "type": "DIAMONDS"}]' http://localhost:8080/poker/isstraight
-true
+
+Response is true
