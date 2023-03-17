@@ -1,22 +1,22 @@
 # Poker
 The Poker service can evaluate whether a set of 7 cards is a straight hand.
 
-Each card has a value from 1 to 3
-1 - Ace
-11 - Jack
-12 - Queen 
+Each card has a value from 1 to 13
+
+1 - Ace  
+11 - Jack  
+12 - Queen   
 13 - King
 
-Each card has a type.
-Valid types are CLUBS, DIAMONDS, HEARTS, SPADES.
+Each card has a type  
+Valid types are CLUBS, DIAMONDS, HEARTS, SPADES.  
 
 ## Straight hand
-7 cards
-5 of which be sequential values.
-Ace can be 1 or 14. (14 is not a valid input. 1 will substitute in its place)
-1,2,3,4,5 are sequential.
-10,11,12,13,1 are sequential.
-10,11,12,13,2 is not sequential.
+7 cards    
+5 of which be sequential values     
+1,2,3,4,5 are sequential  
+10,11,12,13,1 are sequential  
+10,11,12,13,2 are not sequential  
 
 ### Building
 
