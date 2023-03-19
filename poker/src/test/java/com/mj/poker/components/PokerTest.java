@@ -113,4 +113,32 @@ class PokerTest {
 
         assertFalse(poker.isStraight(hand));
     }
+
+    @Test
+    public void testMorethan7cards() {
+        List<Card> hand = Arrays.asList(
+                new Card(2, CardType.CLUBS),
+                new Card(1, CardType.DIAMONDS),
+                new Card(3, CardType.SPADES),
+                new Card(5, CardType.CLUBS),
+                new Card(4, CardType.CLUBS),
+                new Card(10, CardType.CLUBS),
+                new Card(11, CardType.CLUBS),
+                new Card(8, CardType.CLUBS));
+
+        assertFalse(poker.isStraight(hand));
+    }
+
+    @Test
+    public void testInvalidCard() {
+        List<Card> hand = Arrays.asList(new Card(2, CardType.CLUBS),
+                new Card(3, CardType.DIAMONDS),
+                new Card(4, CardType.HEARTS),
+                new Card(18, CardType.DIAMONDS),
+                new Card(5, CardType.SPADES),
+                new Card(6, CardType.CLUBS),
+                new Card(11, CardType.CLUBS));
+
+        assertFalse(poker.isStraight(hand));
+    }
 }

@@ -41,3 +41,8 @@ Response is false
 curl -X POST -H 'Content-Type: application/json' -d '[{"value":1, "type": "CLUBS"},{"value":3, "type": "DIAMONDS"},{"value":5, "type": "HEARTS"},{"value":7, "type": "SPADES"},{"value":6, "type": "CLUBS"},{"value":4, "type": "HEARTS"},{"value":1, "type": "DIAMONDS"}]' http://localhost:8080/poker/isstraight
 
 Response is true
+
+### TODO
+
+Return better and meaningful error responses.  
+Duplicate card in input should be marked invalid input and return false

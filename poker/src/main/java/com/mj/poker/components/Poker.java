@@ -1,16 +1,22 @@
 package com.mj.poker.components;
 
 import com.mj.poker.api.Card;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Business logic for Poker
  */
 @Component
 public class Poker {
+
+    static Logger LOGGER = LoggerFactory.getLogger(Poker.class);
 
     CardComparator cardComparator = new CardComparator();
 
@@ -24,12 +30,8 @@ public class Poker {
      */
     public boolean isStraight(List<Card> hand) {
 
-        if (hand == null) {
+        if (!validateHand(hand)) {
             return false;
-        }
-
-        if (hand.size() < 7) {
-            return false ;
         }
 
         Collections.sort(hand, cardComparator);
@@ -37,9 +39,11 @@ public class Poker {
         boolean hasAce = false ;
         int seqCount = 1;
         Card prev = hand.get(0);
+
         hasAce = prev.getValue() == 1 ? true : false;
         for (int i = 1 ; i < 7 ; i++) {
             Card curr = hand.get(i);
+
             if (curr.getValue() == prev.getValue() + 1) {
                 seqCount++;
                 if (seqCount == 5) {
@@ -60,6 +64,28 @@ public class Poker {
             prev = curr;
         }
 
+        LOGGER.info("Hand does not have sequence returning false");
         return false ;
+    }
+
+    private boolean validateHand(List<Card> hand) {
+
+        if (hand == null) {
+            LOGGER.warn("Invalid null hand");
+            return false;
+        }
+
+        if (hand.size() != 7) {
+            LOGGER.warn("Invalid hand does not have 7 cards");
+            return false;
+        }
+
+        for (Card c : hand) {
+            if (c.getValue() < 1 || c.getValue() > 13) {
+                LOGGER.warn("Invalid card " + c.getValue() + c.getType().name());
+                return false;
+            }
+        }
+        return true;
     }
 }
