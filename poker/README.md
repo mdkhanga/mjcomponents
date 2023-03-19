@@ -32,8 +32,18 @@ or
 
 ### Usage or Calling the service
 
-You can use any http client. Below are some examples using curl
+You can use any http client. Below are some examples using curl  
+The service listens on port 8080.  
+URL is /poker/isstraight  
+method is POST
+Input is JSON in the body of a POST. See example  
 
+Response:  
+true if it is a straight hand  
+false if it is not or input is invalid  
+HTTP Bad request if the JSON is invalid
+
+#### Examples
 curl -X POST -H 'Content-Type: application/json' -d '[{"value":1, "type": "CLUBS"}]' http://localhost:8080/poker/isstraight
 
 Response is false

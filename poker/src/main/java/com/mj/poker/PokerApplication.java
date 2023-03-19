@@ -14,7 +14,6 @@ public class PokerApplication {
 		try {
 			SpringApplication.run(PokerApplication.class, args);
 		} catch (Exception e) {
-			// System.out.println(e);
 			LOGGER.error("Error starting Poker:", e);
 		}
 	}

@@ -36,22 +36,15 @@ public class Poker {
 
         Collections.sort(hand, cardComparator);
 
-        boolean hasAce = false ;
         int seqCount = 1;
         Card prev = hand.get(0);
-
-        hasAce = prev.getValue() == 1 ? true : false;
+        boolean hasAce = prev.getValue() == 1 ? true : false;
         for (int i = 1 ; i < 7 ; i++) {
             Card curr = hand.get(i);
-
             if (curr.getValue() == prev.getValue() + 1) {
                 seqCount++;
                 if (seqCount == 5) {
                     return true;
-                }
-                if (curr.getValue() == 1) {
-                    // remember if there is an ACE. Needed for edge case below
-                    hasAce = false;
                 }
             } else {
                 seqCount = 1;
@@ -63,7 +56,6 @@ public class Poker {
             }
             prev = curr;
         }
-
         LOGGER.info("Hand does not have sequence returning false");
         return false ;
     }
