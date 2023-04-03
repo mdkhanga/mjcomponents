@@ -1,13 +1,14 @@
-import Link from "next/link"
+import Layout from "../../components/Layout"
+import Link from 'next/link'
 
 
 export default function HomePage() {
   return (
-    <div> 
+    <Layout> 
       <h1> Welcome to the myfinance application </h1>
       <Link href="/about"> About</Link> <br/>
       <Link href="/accounts"> Accounts</Link>
-    </div>
+    </Layout>
 
   )
 }

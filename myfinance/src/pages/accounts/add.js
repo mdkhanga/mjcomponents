@@ -1,9 +1,11 @@
+import Layout from "../../../components/Layout"
+
 export default function AddAccountsPage() {
     return (
 
-        <div>
+        <Layout>
             <h1> Add Accounts </h1>
-        </div>
+        </Layout>
 
     )
 }
