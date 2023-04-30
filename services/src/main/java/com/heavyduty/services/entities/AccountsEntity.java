@@ -1,9 +1,6 @@
 package com.heavyduty.services.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
@@ -14,8 +11,11 @@ public class AccountsEntity {
     @Column(name = "accountname")
     private String accountName;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "username")
     @Column(name = "username")
-    private String userName;
+    private UsersEntity user;
+
     private String type;
     private float balance;
     private Timestamp updated;
@@ -24,12 +24,15 @@ public class AccountsEntity {
 
     }
 
-    public AccountsEntity(String name, String user, String ty, float b, Timestamp t) {
-        accountName = name;
-        userName = user;
-        type = ty;
-        balance = b;
-        updated = t;
+    private String getAccountName() {
+        return accountName;
     }
-    
+
+    private void setAccountName(String s) {
+        accountName = s;
+    }
+
+
+
+
 }
