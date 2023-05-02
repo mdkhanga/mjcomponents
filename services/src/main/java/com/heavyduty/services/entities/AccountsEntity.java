@@ -2,6 +2,7 @@ package com.heavyduty.services.entities;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Calendar;
 
 @Entity
 @Table(name = "accounts")
@@ -23,9 +24,20 @@ public class AccountsEntity {
     private float balance;
 
     @Column(name = "updated")
-    private Timestamp updated;
+    private Timestamp updated  ;
 
     public AccountsEntity() {
+
+    }
+
+    public AccountsEntity(String s, String a, String t, float f) {
+        accountName = s;
+        userName = a ;
+        type = t ;
+        balance = f;
+        Calendar c = Calendar.getInstance();
+        updated = new Timestamp(c.getTime().getTime());
+
 
     }
 
@@ -37,14 +49,35 @@ public class AccountsEntity {
         accountName = s;
     }
 
-    private String getUserName() {
+    public String getUserName() {
         return userName;
     }
 
-    private void setUserName(String s) {
+    public void setUserName(String s) {
         userName = s;
     }
 
+    public void setType(String s) {
+        type = s;
+    }
 
+    public String getType() {
+        return type;
+    }
 
+    public void setBalance(float b) {
+        balance = b;
+    }
+
+    public float getBalance() {
+        return balance;
+    }
+
+    public void setUpdated(Timestamp t) {
+        updated = t ;
+    }
+
+    public Timestamp getUpdated() {
+        return updated;
+    }
 }

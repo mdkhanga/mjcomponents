@@ -8,10 +8,11 @@ create table if not exists users (
 
 create table if not exists accounts  (
     username  varchar(20),
-    accountname varchar(20),
+    accountname varchar(20) primary key,
     type varchar(8),
     balance float,
-    updated timestamp
+    updated timestamp,
+    FOREIGN KEY (username) REFERENCES users(username)
 ) ;
 
 create table if not exists transaction  (
