@@ -1,0 +1,1 @@
+insert into accounts values('xxx','yChecking','CHECKING',27000,now())
