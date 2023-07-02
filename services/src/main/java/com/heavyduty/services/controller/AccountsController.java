@@ -2,6 +2,7 @@ package com.heavyduty.services.controller;
 
 import com.heavyduty.services.api.Account;
 import com.heavyduty.services.api.AccountType;
+import com.heavyduty.services.entities.AccountId;
 import com.heavyduty.services.entities.AccountsEntity;
 import com.heavyduty.services.repository.AccountsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,9 +31,17 @@ public class AccountsController {
         Iterable<AccountsEntity> entities = accountsRepository.findAll();
 
         entities.forEach((c)->{
-            ret.add(new Account(c.getAccountName(), AccountType.valueOf(c.getType()), c.getBalance()));
+            ret.add(new Account(c.getAccountId().getAccountName(), AccountType.valueOf(c.getType()), c.getBalance()));
         });
 
         return ret;
+    }
+
+    @GetMapping("/{username}/{account}")
+    public Account getAccount(@PathParam("username") String username, @PathParam("account") String account) {
+
+        AccountsEntity accountEntity = accountsRepository.findById(new AccountId(username, account)).get();
+
+        return new Account(accountEntity.getAccountId().getAccountName(), AccountType.valueOf(accountEntity.getType()), accountEntity.getBalance());
     }
 }

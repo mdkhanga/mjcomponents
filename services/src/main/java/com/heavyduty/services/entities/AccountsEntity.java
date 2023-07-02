@@ -8,14 +8,8 @@ import java.util.Calendar;
 @Table(name = "accounts")
 public class AccountsEntity {
 
-    @Id
-    @Column(name = "accountname")
-    private String accountName;
-
-    // @OneToOne(fetch = FetchType.LAZY)
-    // @JoinColumn(name = "username")
-    @Column(name = "username")
-    private String userName;
+   @EmbeddedId
+   private AccountId accountId;
 
     @Column(name = "type")
     private String type;
@@ -30,9 +24,8 @@ public class AccountsEntity {
 
     }
 
-    public AccountsEntity(String s, String a, String t, float f) {
-        accountName = s;
-        userName = a ;
+    public AccountsEntity(AccountId a, String t, float f) {
+        accountId = a ;
         type = t ;
         balance = f;
         Calendar c = Calendar.getInstance();
@@ -41,21 +34,14 @@ public class AccountsEntity {
 
     }
 
-    public String getAccountName() {
-        return accountName;
+    public AccountId getAccountId() {
+        return accountId;
     }
 
-    public void setAccountName(String s) {
-        accountName = s;
+    public void setAccountId(AccountId s) {
+        accountId = s;
     }
 
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String s) {
-        userName = s;
-    }
 
     public void setType(String s) {
         type = s;
