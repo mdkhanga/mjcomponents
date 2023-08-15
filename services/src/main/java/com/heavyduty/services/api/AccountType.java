@@ -4,7 +4,7 @@ public enum AccountType {
     CHECKING,
     SAVINGS,
     STOCK,
-    MUTUALFUND,
+    MFUND,
     CREDITCARD,
     DEPOSIT
 }
