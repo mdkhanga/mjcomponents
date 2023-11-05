@@ -1,4 +1,4 @@
 package com.heavyduty.services.api;
 
-public class Transaction {
+public class AccountTransaction {
 }
