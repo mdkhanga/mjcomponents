@@ -31,26 +31,26 @@ class AccountsRepositoryTest {
         accountsRepository.deleteById(new AccountId("manoj","BOAChecking"));
     }
 
-    /* @Test
+    @Test
     public void testMany() {
 
         Set<String> accounts = Set.of("BOAChecking", "CitiChecking", "EtradeBrokerage", "VanguardBrokerage") ;
 
-        accountsRepository.save(new AccountsEntity("BOAChecking","manoj","checking",123.45F));
-        accountsRepository.save(new AccountsEntity("CitiChecking","manoj","checking",241.45F));
-        accountsRepository.save(new AccountsEntity("EtradeBrokerage","manoj","broker",291.45F));
-        accountsRepository.save(new AccountsEntity("VanguardBrokerage","manoj","broker",292.45F));
+        accountsRepository.save(new AccountsEntity(new AccountId("manoj","BOAChecking"),"checking",123.45F));
+        accountsRepository.save(new AccountsEntity(new AccountId("manoj","CitiChecking"),"checking",241.45F));
+        accountsRepository.save(new AccountsEntity(new AccountId("manoj","EtradeBrokerage"),"broker",291.45F));
+        accountsRepository.save(new AccountsEntity(new AccountId("manoj","VanguardBrokerage"),"broker",292.45F));
 
         Iterable<AccountsEntity> res = accountsRepository.findAll();
 
         res.forEach((c)->{
-            assertTrue(accounts.contains(c.getAccountName()));
+            assertTrue(accounts.contains(c.getAccountId().getAccountName()));
         });
 
-        accountsRepository.deleteById("BOAChecking");
-        accountsRepository.deleteById("CitiChecking");
-        accountsRepository.deleteById("EtradeBrokerage");
-        accountsRepository.deleteById("VanguardBrokerage");
+        accountsRepository.deleteById(new AccountId("manoj","BOAChecking"));
+        accountsRepository.deleteById(new AccountId("manoj","CitiChecking"));
+        accountsRepository.deleteById(new AccountId("manoj","EtradeBrokerage"));
+        accountsRepository.deleteById(new AccountId("manoj","VanguardBrokerage"));
 
-    } */
+    }
 }
