@@ -8,8 +8,8 @@ import java.util.Calendar;
 @Table(name = "accounts")
 public class AccountsEntity {
 
-   @EmbeddedId
-   private AccountId accountId;
+    @EmbeddedId
+    private AccountId accountId;
 
     @Column(name = "type")
     private String type;
@@ -30,8 +30,6 @@ public class AccountsEntity {
         balance = f;
         Calendar c = Calendar.getInstance();
         updated = new Timestamp(c.getTime().getTime());
-
-
     }
 
     public AccountId getAccountId() {

@@ -1,24 +1,52 @@
 package com.heavyduty.services.entities;
 
-import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import com.heavyduty.services.api.Operation;
+import org.hibernate.annotations.CreationTimestamp;
+
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "transactions")
+@Table(name = "transaction")
 public class TransactionsEntity {
 
-    @EmbeddedId
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private int transactionId;
+
+    @Embedded
     private AccountId accountId;
 
     @Column(name = "amount")
     private float amount;
 
     @Column(name = "operation")
-    private float operation;
+    private String operation;
 
+    @CreationTimestamp
     @Column(name = "updated")
     private Timestamp updated  ;
+
+    public TransactionsEntity(AccountId a, float f, Operation o) {
+        accountId = a;
+        amount = f;
+        operation = o.name();
+    }
+
+    public long getTransactionId() {
+        return transactionId;
+    }
+
+    public AccountId getAccountId() {
+        return accountId;
+    }
+
+    public float getAmount() {
+        return amount;
+    }
+
+    public Operation getOperation() {
+        return Operation.valueOf(operation);
+    }
 }

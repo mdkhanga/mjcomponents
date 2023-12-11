@@ -17,10 +17,11 @@ create table if not exists accounts  (
 ) ;
 
 create table if not exists transaction  (
+    id serial primary key,
     username  varchar(20),
     accountname varchar(20),
     amount float,
-    operation int,
+    operation varchar(6),
     updated timestamp
 ) ;
 
