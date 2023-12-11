@@ -32,6 +32,8 @@ class TransactionsRepositoryTest {
 
         System.out.println(te.getTransactionId());
 
+        transactionsRepository.deleteById(te.getTransactionId());
+
     }
 
 }

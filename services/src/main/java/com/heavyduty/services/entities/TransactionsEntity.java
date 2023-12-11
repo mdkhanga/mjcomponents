@@ -28,13 +28,17 @@ public class TransactionsEntity {
     @Column(name = "updated")
     private Timestamp updated  ;
 
+    public TransactionsEntity() {
+
+    }
+
     public TransactionsEntity(AccountId a, float f, Operation o) {
         accountId = a;
         amount = f;
         operation = o.name();
     }
 
-    public long getTransactionId() {
+    public int getTransactionId() {
         return transactionId;
     }
 
