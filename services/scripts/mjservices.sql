@@ -9,11 +9,22 @@ create table if not exists users (
 create table if not exists accounts  (
     username  varchar(20),
     accountname varchar(20),
+    id int
     type varchar(8),
-    balance float,
+    subtype varchar(8).
     updated timestamp,
     PRIMARY KEY(username, accountname),
     FOREIGN KEY (username) REFERENCES users(username)
+) ;
+
+create table if not exists accountbalance  (
+    int accountid,
+    int month,
+    int year,
+    float balance,
+    updated timestamp,
+    PRIMARY KEY(accountid, month, year),
+    FOREIGN KEY (accountid) REFERENCES accounts(id)
 ) ;
 
 create table if not exists transaction  (
