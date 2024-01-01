@@ -8,8 +8,16 @@ import java.util.Calendar;
 @Table(name = "accounts")
 public class AccountsEntity {
 
-    @EmbeddedId
-    private AccountId accountId;
+    @Id
+    @Column(name = "id")
+    private int id;
+
+    @Column(name = "accountname")
+    private String accountName;
+
+    @Column(name = "id")
+    private String userName;
+
 
     @Column(name = "type")
     private String type;

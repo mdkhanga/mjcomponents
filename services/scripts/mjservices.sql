@@ -9,7 +9,7 @@ create table if not exists users (
 create table if not exists accounts  (
     username  varchar(20),
     accountname varchar(20),
-    id int
+    id SERIAL,
     type varchar(8),
     subtype varchar(8).
     updated timestamp,
