@@ -23,12 +23,12 @@ class AccountsRepositoryTest {
     @Test
     public void testone() {
 
-        accountsRepository.save(new AccountsEntity(new AccountId("manoj","BOAChecking"),"checking",123.45F));
-        Optional<AccountsEntity> res = accountsRepository.findById(new AccountId("manoj","BOAChecking"));
+        AccountsEntity saved = accountsRepository.save(new AccountsEntity("manoj","BOAChecking","checking",123.45F));
+        Optional<AccountsEntity> res = accountsRepository.findById(saved.getAccountId());
         assertTrue(res.isPresent());
-        assertEquals("BOAChecking",res.get().getAccountId().getAccountName());
+        assertEquals("BOAChecking",res.get().);
         assertEquals(123.45F,res.get().getBalance());
-        accountsRepository.deleteById(new AccountId("manoj","BOAChecking"));
+        // accountsRepository.deleteById(saved.getAccountId());
     }
 
     @Test

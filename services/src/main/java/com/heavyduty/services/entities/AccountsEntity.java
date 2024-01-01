@@ -18,7 +18,6 @@ public class AccountsEntity {
     @Column(name = "id")
     private String userName;
 
-
     @Column(name = "type")
     private String type;
 
@@ -32,20 +31,17 @@ public class AccountsEntity {
 
     }
 
-    public AccountsEntity(AccountId a, String t, float f) {
-        accountId = a ;
+    public AccountsEntity(String user, String acctName, String t, float f) {
+        userName = user  ;
+        acctName = accountName;
         type = t ;
         balance = f;
         Calendar c = Calendar.getInstance();
         updated = new Timestamp(c.getTime().getTime());
     }
 
-    public AccountId getAccountId() {
-        return accountId;
-    }
-
-    public void setAccountId(AccountId s) {
-        accountId = s;
+    public int getAccountId() {
+        return id;
     }
 
 

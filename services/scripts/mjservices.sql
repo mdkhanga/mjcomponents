@@ -11,13 +11,14 @@ create table if not exists accounts  (
     accountname varchar(20),
     id SERIAL,
     type varchar(8),
-    subtype varchar(8).
+    subtype varchar(8),
+    float balance,
     updated timestamp,
     PRIMARY KEY(username, accountname),
     FOREIGN KEY (username) REFERENCES users(username)
 ) ;
 
-create table if not exists accountbalance  (
+create table if not exists accountbalancehistory  (
     int accountid,
     int month,
     int year,
