@@ -12,7 +12,7 @@ create table if not exists accounts  (
     id SERIAL,
     type varchar(8),
     subtype varchar(8),
-    float balance,
+    balance float,
     updated timestamp,
     PRIMARY KEY(username, accountname),
     FOREIGN KEY (username) REFERENCES users(username)

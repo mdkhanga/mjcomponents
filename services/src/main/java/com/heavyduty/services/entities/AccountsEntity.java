@@ -40,10 +40,21 @@ public class AccountsEntity {
         updated = new Timestamp(c.getTime().getTime());
     }
 
-    public int getAccountId() {
+    public int getId() {
         return id;
     }
 
+    public void setId(int i) {
+        id = i;
+    }
+
+    public String getAccountName() {
+        return accountName;
+    }
+
+    public void setAccountName(String accountName) {
+        this.accountName = accountName;
+    }
 
     public void setType(String s) {
         type = s;

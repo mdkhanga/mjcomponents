@@ -32,7 +32,7 @@ public class AccountsController {
         Iterable<AccountsEntity> entities = accountsRepository.findAll();
 
         entities.forEach((c)->{
-            ret.add(new Account(c.getAccountId().getAccountName(), AccountType.valueOf(c.getType()), c.getBalance()));
+            ret.add(new Account(c.getAccountName(), AccountType.valueOf(c.getType()), c.getBalance()));
         });
 
         return ret;
@@ -49,7 +49,7 @@ public class AccountsController {
     @PostMapping
     public void createAccount(@RequestBody Account a) {
 
-        accountsRepository.save(new AccountsEntity(new AccountId("manoj",a.getName())
+        accountsRepository.save(new AccountsEntity("manoj",a.getName()
                     ,a.getType().toString() ,a.getBalance()));
 
     }
@@ -57,12 +57,12 @@ public class AccountsController {
     @PutMapping
     public void updateAccount(@RequestBody Account a) {
 
-        accountsRepository.save(new AccountsEntity(new AccountId("manoj",a.getName())
-                ,a.getType().toString() ,a.getBalance()));
+        accountsRepository.save(new AccountsEntity("manoj",a.getName()
+                ,a.getType().toString() ,a.getBalance());
 
     }
 
-    @DeleteMapping("/{username}/{account}")
+    @DeleteMapping("/{id}")
     public void deleteAccount(@PathVariable("username") String username, @PathVariable("account") String account) {
         accountsRepository.deleteById(new AccountId(username, account));
     }
