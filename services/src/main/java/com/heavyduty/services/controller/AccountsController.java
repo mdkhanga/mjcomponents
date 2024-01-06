@@ -38,10 +38,10 @@ public class AccountsController {
         return ret;
     }
 
-    @GetMapping("/{username}/{account}")
-    public Account getAccount(@PathVariable("username") String username, @PathVariable("account") String account) {
+    @GetMapping("/{id}")
+    public Account getAccount(@PathVariable("id") int id) {
 
-        AccountsEntity accountEntity = accountsRepository.findById(new AccountId(username, account)).get();
+        AccountsEntity accountEntity = accountsRepository.findById(id).get();
 
         return new Account(accountEntity.getAccountId().getAccountName(), AccountType.valueOf(accountEntity.getType()), accountEntity.getBalance());
     }
@@ -63,8 +63,8 @@ public class AccountsController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteAccount(@PathVariable("username") String username, @PathVariable("account") String account) {
-        accountsRepository.deleteById(new AccountId(username, account));
+    public void deleteAccount(@PathVariable("id") int id) {
+        accountsRepository.deleteById(id);
     }
 
     @Transactional

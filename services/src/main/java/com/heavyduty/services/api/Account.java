@@ -2,6 +2,7 @@ package com.heavyduty.services.api;
 
 public class Account {
 
+    
     private String name ;
     private AccountType type;
     private float balance;
