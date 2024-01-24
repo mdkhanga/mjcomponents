@@ -5,10 +5,13 @@ import com.heavyduty.services.entities.UsersEntity;
 import com.heavyduty.services.repository.JDBCUsersRepository;
 import com.heavyduty.services.repository.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/v1/user")
@@ -46,6 +49,22 @@ public class UserController {
     @PostMapping("/users")
     public void createUser(@RequestBody User u) {
         usersRepository.save(new UsersEntity(u.getUsername(),u.getPassword(),u.getEmail()));
+    }
+
+    public ResponseEntity<String> signin(@RequestBody User u) {
+
+        try {
+            UsersEntity ue = usersRepository.findById(u.getUsername()).get();
+
+            if (ue.getPassword().equals(u.getPassword())) {
+                return ResponseEntity.ok("success");
+            } else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Invalid Password !");
+            }
+        } catch(NoSuchElementException n) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found.");
+        }
+
     }
 
 }
