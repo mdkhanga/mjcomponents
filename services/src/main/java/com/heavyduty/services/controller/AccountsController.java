@@ -43,7 +43,7 @@ public class AccountsController {
 
         AccountsEntity accountEntity = accountsRepository.findById(id).get();
 
-        return new Account(accountEntity.getAccountId().getAccountName(), AccountType.valueOf(accountEntity.getType()), accountEntity.getBalance());
+        return new Account(accountEntity.getAccountName(), AccountType.valueOf(accountEntity.getType()), accountEntity.getBalance());
     }
 
     @PostMapping
@@ -58,7 +58,7 @@ public class AccountsController {
     public void updateAccount(@RequestBody Account a) {
 
         accountsRepository.save(new AccountsEntity("manoj",a.getName()
-                ,a.getType().toString() ,a.getBalance());
+                ,a.getType().toString() ,a.getBalance()));
 
     }
 

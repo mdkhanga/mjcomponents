@@ -9,12 +9,11 @@ create table if not exists users (
 create table if not exists accounts  (
     username  varchar(20),
     accountname varchar(20),
-    id SERIAL,
+    id SERIAL PRIMARY KEY,
     type varchar(8),
     subtype varchar(8),
     balance float,
     updated timestamp,
-    PRIMARY KEY(username, accountname),
     FOREIGN KEY (username) REFERENCES users(username)
 ) ;
 

@@ -51,6 +51,7 @@ public class UserController {
         usersRepository.save(new UsersEntity(u.getUsername(),u.getPassword(),u.getEmail()));
     }
 
+    @PostMapping("/signon")
     public ResponseEntity<String> signin(@RequestBody User u) {
 
         try {

@@ -12,11 +12,11 @@ public class AccountsEntity {
     @Column(name = "id")
     private int id;
 
+    @Column(name = "username")
+    private String userName;
+
     @Column(name = "accountname")
     private String accountName;
-
-    @Column(name = "id")
-    private String userName;
 
     @Column(name = "type")
     private String type;
