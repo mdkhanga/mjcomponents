@@ -54,10 +54,13 @@ public class UserController {
     @PostMapping("/signon")
     public ResponseEntity<String> signin(@RequestBody User u) {
 
+        System.out.println("Recieved signon request for "+ u.getUsername());
+
         try {
             UsersEntity ue = usersRepository.findById(u.getUsername()).get();
 
             if (ue.getPassword().equals(u.getPassword())) {
+                System.out.println("success");
                 return ResponseEntity.ok("success");
             } else {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Invalid Password !");
