@@ -26,13 +26,14 @@ public class AccountsController {
 
     }
 
-    @GetMapping("/{username}")
+    @GetMapping("/account/{username}")
     public List<Account> getAccounts(@PathParam("username") String username) {
         List<Account> ret = new ArrayList<>();
         Iterable<AccountsEntity> entities = accountsRepository.findAll();
 
         entities.forEach((c)->{
             ret.add(new Account(c.getAccountName(), AccountType.valueOf(c.getType()), c.getBalance()));
+            System.out.println(c.getAccountName());
         });
 
         return ret;
