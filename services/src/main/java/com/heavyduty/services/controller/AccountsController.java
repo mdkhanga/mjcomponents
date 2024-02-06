@@ -26,7 +26,7 @@ public class AccountsController {
 
     }
 
-    @GetMapping("/account/{username}")
+    @GetMapping("/{username}")
     public List<Account> getAccounts(@PathParam("username") String username) {
         List<Account> ret = new ArrayList<>();
         Iterable<AccountsEntity> entities = accountsRepository.findAll();
@@ -39,7 +39,7 @@ public class AccountsController {
         return ret;
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/user/{id}")
     public Account getAccount(@PathVariable("id") int id) {
 
         AccountsEntity accountEntity = accountsRepository.findById(id).get();
