@@ -11,7 +11,7 @@ create table if not exists accounts  (
     accountname varchar(20),
     id SERIAL PRIMARY KEY,
     type varchar(8),
-    subtype varchar(8),
+    subtype varchar(10),
     balance float,
     updated timestamp,
     FOREIGN KEY (username) REFERENCES users(username)
