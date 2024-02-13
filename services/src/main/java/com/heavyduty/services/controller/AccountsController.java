@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
-import javax.websocket.server.PathParam;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,14 +21,17 @@ public class AccountsController {
     @Autowired
     AccountsRepository accountsRepository;
 
+    private static int i = 0;
+
     public AccountsController() {
 
     }
 
     @GetMapping("/{username}")
-    public List<Account> getAccounts(@PathParam("username") String username) {
+    public List<Account> getAccounts(@PathVariable("username") String username) {
+        System.out.println("Received request" + ++i + " " + username);
         List<Account> ret = new ArrayList<>();
-        Iterable<AccountsEntity> entities = accountsRepository.findAll();
+        Iterable<AccountsEntity> entities = accountsRepository.findAllByUserName(username);
 
         entities.forEach((c)->{
             ret.add(new Account(c.getAccountName(), AccountType.valueOf(c.getType()), c.getBalance()));
