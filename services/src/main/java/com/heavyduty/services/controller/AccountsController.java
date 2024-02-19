@@ -49,10 +49,10 @@ public class AccountsController {
         return new Account(accountEntity.getAccountName(), AccountType.valueOf(accountEntity.getType()), accountEntity.getBalance());
     }
 
-    @PostMapping
-    public void createAccount(@RequestBody Account a) {
+    @PostMapping("/{username}")
+    public void createAccount(@RequestBody Account a, @PathVariable("username") String username) {
 
-        accountsRepository.save(new AccountsEntity("manoj",a.getName()
+        accountsRepository.save(new AccountsEntity(username,a.getName()
                     ,a.getType().toString() ,a.getBalance()));
 
     }
