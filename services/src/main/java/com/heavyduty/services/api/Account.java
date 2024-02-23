@@ -24,4 +24,8 @@ public class Account {
     public float getBalance() {
         return balance;
     }
+
+    public String toString() {
+        return String.format("%s %s %f",name, type, balance);
+    }
 }

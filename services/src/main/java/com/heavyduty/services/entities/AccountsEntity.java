@@ -33,7 +33,7 @@ public class AccountsEntity {
 
     public AccountsEntity(String user, String acctName, String t, float f) {
         userName = user  ;
-        acctName = accountName;
+        accountName = acctName;
         type = t ;
         balance = f;
         Calendar c = Calendar.getInstance();

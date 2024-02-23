@@ -52,6 +52,7 @@ public class AccountsController {
     @PostMapping("/{username}")
     public void createAccount(@RequestBody Account a, @PathVariable("username") String username) {
 
+        System.out.print(a);
         accountsRepository.save(new AccountsEntity(username,a.getName()
                     ,a.getType().toString() ,a.getBalance()));
 
