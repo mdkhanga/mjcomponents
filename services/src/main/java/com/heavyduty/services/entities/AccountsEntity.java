@@ -9,7 +9,8 @@ import java.util.Calendar;
 public class AccountsEntity {
 
     @Id
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(columnDefinition = "serial")
     private int id;
 
     @Column(name = "username")
