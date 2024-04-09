@@ -17,6 +17,20 @@ create table if not exists accounts  (
     FOREIGN KEY (username) REFERENCES users(username)
 ) ;
 
+create table if not exists monthlybalance  (
+    username  varchar(20),
+    accountid integer,
+    balance float,
+    bmonth smallint,
+    byear smallint,
+    updated timestamp,
+    FOREIGN KEY (username) REFERENCES users(username),
+    FOREIGN KEY (accountid) REFERENCES accounts(id)
+    PRIMARY KEY (username, accountid, bmonth, byear)
+ 
+) ;
+
+
 create table if not exists accountbalancehistory  (
     int accountid,
     int month,
