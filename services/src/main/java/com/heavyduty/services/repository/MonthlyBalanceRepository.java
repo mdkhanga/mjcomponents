@@ -19,7 +19,7 @@ public class MonthlyBalanceRepository {
     @Autowired
     private NamedParameterJdbcTemplate namedJdbcTemplate ;
 
-    List<MonthBalance> getMonthlyBalances(String username, int year) {
+    public List<MonthBalance> getMonthlyBalances(String username, int year) {
 
         // List<MonthBalance> ret = new ArrayList<>();
 
@@ -35,6 +35,21 @@ public class MonthlyBalanceRepository {
         return namedJdbcTemplate.query(sql, params, new MonthBalanceMapper());
 
 
+    }
+
+    public void insert(String username, MonthBalance monthlyBalance) {
+
+        String sql = "INSERT INTO monthlybalance (username, accountid, balance, bmonth, byear, updated) " +
+                "VALUES (:username, :accountId, :balance, :month, :year, :updated)";
+
+        MapSqlParameterSource params = new MapSqlParameterSource();
+        params.addValue("username", username);
+        params.addValue("accountId", monthlyBalance.accountid());
+        params.addValue("balance", monthlyBalance.balance());
+        params.addValue("month", monthlyBalance.month());
+        params.addValue("year", monthlyBalance.year());
+
+        namedJdbcTemplate.update(sql, params);
 
     }
 
@@ -43,7 +58,7 @@ public class MonthlyBalanceRepository {
         public MonthBalance mapRow(ResultSet rs, int rowNum) throws SQLException {
             return new MonthBalance(
                     rs.getInt("id"),
-                    rs.getString("accountname"),
+                    rs.getInt("accountid"),
                     rs.getInt("bmonth"),
                     rs.getInt("byear"),
                     rs.getFloat("balance")

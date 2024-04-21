@@ -1,7 +1,7 @@
 package com.heavyduty.services.api;
 
 public record MonthBalance(int id,
-                            String accountname,
+                           int accountid ,
                            int month,
                            int year,
                            float balance) {}
