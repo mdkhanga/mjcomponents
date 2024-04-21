@@ -25,7 +25,7 @@ create table if not exists monthlybalance  (
     byear smallint,
     updated timestamp,
     FOREIGN KEY (username) REFERENCES users(username),
-    FOREIGN KEY (accountid) REFERENCES accounts(id)
+    FOREIGN KEY (accountid) REFERENCES accounts(id),
     PRIMARY KEY (username, accountid, bmonth, byear)
  
 ) ;
