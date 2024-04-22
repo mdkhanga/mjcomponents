@@ -26,9 +26,9 @@ class AccountsRepositoryTest {
         AccountsEntity saved = accountsRepository.save(new AccountsEntity("manoj","BOAChecking","checking",123.45F));
         Optional<AccountsEntity> res = accountsRepository.findById(saved.getId());
         assertTrue(res.isPresent());
-        assertEquals("BOAChecking",res.get());
+        assertEquals("BOAChecking",res.get().getAccountName());
         assertEquals(123.45F,res.get().getBalance());
-        // accountsRepository.deleteById(saved.getAccountId());
+        accountsRepository.deleteById(saved.getId());
     }
 
     /*
