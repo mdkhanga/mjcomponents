@@ -43,15 +43,15 @@ class MonthlyBalanceRepositoryTest {
     @Test
     public void testInsert() {
 
-        monthlyBalanceRepository.insert("manoj", new MonthBalance(1,accountsEntity.getId(),1,2024 ,3000));
+        monthlyBalanceRepository.insert("manoj", new MonthBalance(1,accountsEntity.getId(),accountsEntity.getAccountName(),1,2024 ,3000));
 
     }
 
     @Test
     public void testget() {
 
-        monthlyBalanceRepository.insert("manoj", new MonthBalance(1,accountsEntity.getId(),1,2024 ,3000));
-        monthlyBalanceRepository.insert("manoj", new MonthBalance(1,accountsEntity.getId(),2,2024 ,3145));
+        monthlyBalanceRepository.insert("manoj", new MonthBalance(1,accountsEntity.getId(),accountsEntity.getAccountName(),1,2024 ,3000));
+        monthlyBalanceRepository.insert("manoj", new MonthBalance(1,accountsEntity.getId(),accountsEntity.getAccountName(),2,2024 ,3145));
 
         List<MonthBalance> ret = monthlyBalanceRepository.getMonthlyBalances("manoj",2024);
 

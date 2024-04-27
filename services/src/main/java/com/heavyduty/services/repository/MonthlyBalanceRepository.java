@@ -25,7 +25,7 @@ public class MonthlyBalanceRepository {
 
         // List<MonthBalance> ret = new ArrayList<>();
 
-        String sql = "SELECT a.id, mb.accountid, mb.bmonth, mb.byear, mb.balance " +
+        String sql = "SELECT a.accountname, a.id as aid, mb.accountid as mid, mb.bmonth, mb.byear, mb.balance " +
                 "FROM monthlybalance mb " +
                 "INNER JOIN accounts a ON mb.accountid = a.id and mb.username = a.username " +
                 "WHERE mb.byear = :year and mb.username = :username" ;
@@ -67,8 +67,9 @@ public class MonthlyBalanceRepository {
         @Override
         public MonthBalance mapRow(ResultSet rs, int rowNum) throws SQLException {
             return new MonthBalance(
-                    rs.getInt("id"),
-                    rs.getInt("accountid"),
+                    rs.getInt("mid"),
+                    rs.getInt("aid"),
+                    rs.getString("accountname"),
                     rs.getInt("bmonth"),
                     rs.getInt("byear"),
                     rs.getFloat("balance")
