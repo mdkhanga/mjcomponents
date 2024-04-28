@@ -5,6 +5,7 @@ import com.heavyduty.services.api.AccountTransaction;
 import com.heavyduty.services.api.AccountType;
 import com.heavyduty.services.entities.AccountId;
 import com.heavyduty.services.entities.AccountsEntity;
+import com.heavyduty.services.repository.AccountsJDBCRepository;
 import com.heavyduty.services.repository.AccountsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +21,9 @@ public class AccountsController {
 
     @Autowired
     AccountsRepository accountsRepository;
+
+    @Autowired
+    AccountsJDBCRepository accountsJDBCRepository;
 
     private static int i = 0;
 
@@ -39,6 +43,11 @@ public class AccountsController {
         });
 
         return ret;
+    }
+
+    @GetMapping("/names/{username}")
+    public List<String> getAccountNames(@PathVariable("username") String username) {
+        return accountsJDBCRepository.getAccountNames(username);
     }
 
     @GetMapping("/user/{id}")
