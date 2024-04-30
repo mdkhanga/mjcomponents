@@ -8,3 +8,6 @@ insert into accounts(username, accountname, type, subtype, balance, updated) val
 
 insert into users values('manoj','manoj12','manoj@gmail.com')
 insert into users values('john','john12','john@gmail.com')
+
+insert into monthlybalance values('manoj',40,44000,4,2024,now())
+insert into monthlybalance values('manoj',41,18200,4,2024,now())
