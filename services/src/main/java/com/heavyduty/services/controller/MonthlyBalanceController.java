@@ -23,4 +23,13 @@ public class MonthlyBalanceController {
 
         return monthlyBalanceRepository.getMonthlyBalances(username, year);
     }
+
+    @PostMapping("/{username}")
+    public void createMonthlyBalances(@PathVariable("username") String username, @RequestBody List<MonthBalance> balances) {
+
+        balances.forEach((m) -> {
+            monthlyBalanceRepository.insert(username, m);
+        });
+
+    }
 }

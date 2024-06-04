@@ -3,16 +3,21 @@ package com.heavyduty.services.api;
 public class Account {
 
 
+    private int id;
     private String name ;
     private AccountType type;
     private float balance;
 
-    public Account(String n, AccountType t, float b) {
+    public Account(int i, String n, AccountType t, float b) {
+        id = i;
         name = n ;
         type = t ;
         balance = b;
     }
 
+    public int getId() {
+        return id;
+    }
     public String getName() {
         return name;
     }

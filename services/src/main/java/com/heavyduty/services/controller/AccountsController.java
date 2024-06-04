@@ -38,7 +38,7 @@ public class AccountsController {
         Iterable<AccountsEntity> entities = accountsRepository.findAllByUserName(username);
 
         entities.forEach((c)->{
-            ret.add(new Account(c.getAccountName(), AccountType.valueOf(c.getType()), c.getBalance()));
+            ret.add(new Account(c.getId(), c.getAccountName(), AccountType.valueOf(c.getType()), c.getBalance()));
             System.out.println(c.getAccountName());
         });
 
@@ -55,7 +55,7 @@ public class AccountsController {
 
         AccountsEntity accountEntity = accountsRepository.findById(id).get();
 
-        return new Account(accountEntity.getAccountName(), AccountType.valueOf(accountEntity.getType()), accountEntity.getBalance());
+        return new Account(accountEntity.getId(), accountEntity.getAccountName(), AccountType.valueOf(accountEntity.getType()), accountEntity.getBalance());
     }
 
     @PostMapping("/{username}")
