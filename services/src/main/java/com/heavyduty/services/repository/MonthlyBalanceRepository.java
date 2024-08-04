@@ -28,7 +28,7 @@ public class MonthlyBalanceRepository {
         String sql = "SELECT a.accountname, a.id as aid, mb.accountid as mid, mb.bmonth, mb.byear, mb.balance " +
                 "FROM monthlybalance mb " +
                 "INNER JOIN accounts a ON mb.accountid = a.id and mb.username = a.username " +
-                "WHERE mb.byear = :year and mb.username = :username" ;
+                "WHERE mb.byear = :year and mb.username = :username order by mb.bmonth" ;
 
         MapSqlParameterSource params = new MapSqlParameterSource();
         params.addValue("year", year);
